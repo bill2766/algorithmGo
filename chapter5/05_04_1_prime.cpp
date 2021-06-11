@@ -20,7 +20,7 @@ const int maxn = 101;
 int prime[maxn],pNum=0;
 bool p[maxn] = {0};
 void Find_Prime(){
-    for(int i=0;i<maxn;i++){
+    for(int i=1;i<maxn;i++){
         if(isPrime(i) == true){
             prime[pNum++] = i;
             p[i] = true;

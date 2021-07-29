@@ -15,6 +15,8 @@ void insert(node* &root, int data){
         root->left = root->right = NULL;
         return;
     }
+    if(data < root->data) insert(root->left,data);
+    else insert(root->right,data);
 }
 
 void preOrder(node* root,vector<int> &vi){
@@ -49,5 +51,30 @@ vector<int> origin,pre, preM, post, postM;
 int main(){
     int n,data;
     node* root = NULL;
-    
+    scanf("%d",&n);
+    for(int i = 0; i < n; i++){
+        scanf("%d",&data);
+        origin.push_back(data);
+        insert(root,data);
+    }
+    preOrder(root,pre);
+    preOrderMirror(root,preM);
+    postOrder(root,post);
+    postOrderMirror(root,postM);
+    if(origin == pre){
+        printf("YES\n");
+        for(int i=0;i<post.size();i++){
+            printf("%d",post[i]);
+            if(i < post.size()-1) printf(" ");
+        }
+    }else if(origin == preM){
+        printf("YES\n");
+        for(int i=0;i<postM.size();i++){
+            printf("%d",postM[i]);
+            if(i < postM.size()-1) printf(" ");
+        }
+    }else{
+        printf("NO\n");
+    }
+    return 0;
 }

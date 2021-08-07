@@ -43,3 +43,32 @@ void Dijkstra(int s){
     }
 }
 
+int st;
+
+int optValue;
+vector<int> path;
+
+vector<int> tempPath;
+
+/*
+int DFS(int v){ //v为当前访问结点
+    //递归边界
+    if(v == st){
+        tempPath.push_back(v); //加入
+        int value;
+        //计算路径tempPath上的value值;
+        if(value 优于 optValue){
+            optValue = value;
+            path = tempPath;
+        }
+        tempPath.pop_back(); //退出，再下一条线
+        return;
+    }
+    //递归式
+    tempPath.push_back(v);
+    for(int i=0;i< pre[v].size();i++){
+        DFS(pre[v].front());
+    }
+    tempPath.pop_back();
+}
+*/

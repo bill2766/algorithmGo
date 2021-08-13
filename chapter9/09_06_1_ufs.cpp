@@ -48,9 +48,9 @@ int findFather(int x){
     }
     
     while(a != father[a]){
-        int z = a;
-        a = father[a];
-        father[z] = x;
+        int z = a; //当前的点
+        a = father[a]; //为了下一个while循环
+        father[z] = x; //当前的点父亲设为x（最初父亲）
     }
     return x;
 }

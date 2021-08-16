@@ -14,7 +14,7 @@ const LL MAXN = 1010; //MAXN为字符串最长长度
 
 //powP[i]存放P^i%MOD，H1和H2分别存放str1和str2的hash值
 LL powP[MAXN];
-LL H1[MAXN] = {0}, H2[MAXN] = {0};
+LL H1[MAXN] = {0}, H2[MAXN] = {0};  
 
 //pr1存放str1的所有<子串hash值，子串长度>，pr2同理
 vector<pair<int,int> > pr1, pr2;

@@ -47,7 +47,9 @@ int binarySearch(int l, int r, int len, int i, int isEven){
         int mid = (l+r) / 2;
         //左半子串hash值H1[H1L...H1R]，右半子串hash值H2[H2L...H2R]
         int H1L = i - mid + isEven, H1R = i;
+        //i-k i（奇数）或i-k+1 i（偶数）
         int H2L = len - 1 - (i+mid), H2R = len - 1 - (i + isEven);
+        //len-1-(i+k) len-1-i（奇数）或len-1-(i+k) len-1-(i+1)（偶数）
         int hashL = calSingleSubH(H1,H1L,H1R);
         int hashR = calSingleSubH(H2,H2L,H2R);
         if(hashL != hashR) r = mid; //hash值不等，说明回文半径>mid
@@ -70,6 +72,7 @@ int main(){
     //奇回文
     for(int i=0; i<str.length(); i++){
         //二分上界为分界点i的左右长度的较小值加1
+        //i-1 i i+1（原因是不能超界）
         int maxLen = min(i, (int)str.length() - 1 -i) + 1;
         int k = binarySearch(0, maxLen, str.length(), i, 0); //0表示是奇数
         ans = max(ans,k * 2 + 1);
@@ -78,6 +81,7 @@ int main(){
     //偶回文
     for(int i=0; i<str.length(); i++){
         //二分上界为分界点i的左右长度的较小值加1（注意左长为i+1）
+        //i-1 i i+1 i+2
         int maxLen = min(i+1, (int)str.length() -1 -i) + 1;
         int k = binarySearch(0, maxLen, str.length(), i, 1); //0表示不是奇数
         ans = max(ans, k*2);
